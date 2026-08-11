@@ -53,5 +53,5 @@ run: |
 IMAGE_NAME=my-dotnet-app
 #IMAGE_TAG=${{ github.sha }}
 IMAGE_TAG='TestImage'
-docker tag $IMAGE_NAME:$IMAGE_TAG ${{ secrets.DOCKERUSERNAME }}/$IMAGE_NAME:$IMAGE_TAG
+docker tag $IMAGE_NAME:$IMAGE_TAG ${{ secrets.DOCKERUSER }}/$IMAGE_NAME:$IMAGE_TAG
 docker push ${{ secrets.DOCKERPWD }}/$IMAGE_NAME:$IMAGE_TAG
