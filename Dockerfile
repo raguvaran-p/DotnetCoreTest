@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
  
 # Copy csproj and restore dependencies to cache this layer
-COPY *.sln ./
+COPY *.slnx ./
 COPY *.csproj ./
 RUN dotnet restore
  
@@ -11,7 +11,7 @@ COPY . .
 RUN dotnet publish -c Release -o /app/publish --no-restore
  
 # 2. Runtime Stage
-FROM ://microsoft.com AS runtime
+FROM :/mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
  
