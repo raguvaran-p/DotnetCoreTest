@@ -44,7 +44,7 @@ jobs:
         run: |
           IMAGE_NAME=my-dotnet-app
           #IMAGE_TAG=${{ github.sha }}
-          IMAGE_TAG='TestImage'
+          IMAGE_TAG=TestImage
           docker build -t $IMAGE_NAME:$IMAGE_TAG .
  
 # 8. Push Docker image
