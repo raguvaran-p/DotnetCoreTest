@@ -10,36 +10,36 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
- # 1. Checkout repository
+    # 1. Checkout repository
       - name: Checkout source code
         uses: actions/checkout@v4
  
-# 2. Setup .NET Core SDK
+    # 2. Setup .NET Core SDK
       - name: Setup .NET Cor
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x' # Change to your target version
  
-# 3. Restore dependencies
+    # 3. Restore dependencies
       - name: Restore dependencies
         run: dotnet restore
  
-# 4. Build application
+    # 4. Build application
       - name: Build application
         run: dotnet build --configuration Release --no-restore
  
-# 5. Run tests (optional)
+    # 5. Run tests (optional)
       - name: Run tests
         run: dotnet test --no-build --verbosity normal
  
-# 6. Log in to Docker Hub (or other registry)
+    # 6. Log in to Docker Hub (or other registry)
       - name: Log in to Docker registry
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERUSER }}
           password: ${{ secrets.DOCKERPWD }}
  
-# 7. Build Docker image
+    # 7. Build Docker image
       - name: Build Docker image
         run: |
           IMAGE_NAME=my-dotnet-app
@@ -47,7 +47,7 @@ jobs:
           IMAGE_TAG=TestImage
           docker build -t $IMAGE_NAME:$IMAGE_TAG .
  
-# 8. Push Docker image
+    # 8. Push Docker image
       - name: Push Docker image
         run: |
           IMAGE_NAME=my-dotnet-app
